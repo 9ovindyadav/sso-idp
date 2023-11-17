@@ -1,6 +1,7 @@
 <?php 
 require("./meta-data.php"); 
 session_start();
+
 ?>
 
 <nav class="navbar navbar-expand-lg px-lg-5">
@@ -36,9 +37,16 @@ session_start();
 			</li>
 			    
 		</ul>
-	    <?php 
-	    	if(isset($_SESSION['email'])){
-	    		echo '<ul class="navbar-nav ml-auto">
+	    <?php if(isset($_SESSION['email'])): ?>
+	    <ul class="navbar-nav ml-auto">
+	    	<?php if($_SESSION['role'] === "admin"): ?>
+	    			<li class="nav-item">
+	    		  	<a class="nav-link"
+	    		  		href="/dashboard">
+	    		  		Dashboard
+	    		  	</a>
+	    			</li>
+	    	<?php endif ?>		
 	      	<li class="nav-item">
 	        	<a class="nav-link"
 	        		href="/profile">
@@ -51,9 +59,9 @@ session_start();
 	        		Logout
 	        	</a>
 	      	</li>
-	    </ul>';
-	    	}else{
-	    		echo '<ul class="navbar-nav ml-auto">
+	    </ul>
+	    <?php else : ?>
+	   	<ul class="navbar-nav ml-auto">
 	      	<li class="nav-item">
 	        	<a class="nav-link"
 	        		href="/login">
@@ -66,9 +74,8 @@ session_start();
 	        		Sign up
 	        	</a>
 	      	</li>
-	    </ul>';
-	    	}
-	    ?>
+	    </ul>
+	    <?php endif ?>
 	    
 	</div>
 </nav>

@@ -1,6 +1,7 @@
 <?php
 
 $request = $_SERVER['REQUEST_URI'];
+session_start();
 
 switch($request){
 	case "":
@@ -18,6 +19,14 @@ switch($request){
 		break;
 	case "/profile":
 		require("./views/profile.php");
+		break;
+	case "/dashboard":
+		if($_SESSION['role'] === "admin"){
+			require("./views/dashboard.php");
+		}else{
+			http_response_code(404);
+			echo("<h1 class='text-center'> You don't have permission to access this page.</h1>");
+		}
 		break;
 	case "/delete-account":
 		require("./db/delete-account.php");

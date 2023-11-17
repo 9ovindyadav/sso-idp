@@ -55,6 +55,7 @@ signUpUser();
 						    	type="date" 
 						    	class="form-control" 
 						    	name="dob" 
+						    	onclick="this.showPicker()" 
 						    	id="date-of-birth" 
 						    	placeholder="Enter your full name">
 						</div>

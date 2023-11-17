@@ -9,7 +9,7 @@ function loginUser(){
 	    $email = $_POST['email'];
 	    $password = $_POST['password'];
 
-	    $sql = "SELECT full_name,email,password FROM users WHERE email = :email ;";
+	    $sql = "SELECT full_name,email,password,role FROM users WHERE email = :email ;";
 	    
 	    $statement = $conn->prepare($sql);
 	    $statement->bindParam(":email",$email);
@@ -23,6 +23,7 @@ function loginUser(){
 	    		session_start();
 	    		$_SESSION['email'] = $user['email'] ;
 	    		$_SESSION['full_name'] = $user['full_name'] ;
+	    		$_SESSION['role'] = $user['role'];
 	    		header('location: /');
 	    	}
 	    	echo("Invalid credentials !");

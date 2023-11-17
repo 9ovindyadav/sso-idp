@@ -9,7 +9,7 @@ function createUsersTable($conn) {
 			  email VARCHAR(30) NOT NULL,
 			  role VARCHAR(5) DEFAULT 'user', 
 			  password VARCHAR(100) NOT NULL,
-			  date_of_birth DATE NULL,
+			  date_of_birth DATE DEFAULT CURRENT_DATE,
 			  mobile_no VARCHAR(13),
 			  country VARCHAR(30),
 			  PRIMARY KEY(user_id)

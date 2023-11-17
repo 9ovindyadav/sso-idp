@@ -13,16 +13,15 @@ function addUser($name, $email, $dob, $country,$password = "admin") {
                                     ':country' => $country,
                                     ':password' => $password
                                   ]);
-    // $result->lastInsertId();
 }
 
-function updateUser($name, $email, $country, $id) {
+function updateUser($name, $email, $dob, $country, $id) {
     global $conn;
-    $sql = "UPDATE users SET full_name = :name , email = :email, country = :country WHERE user_id = :id";
+    $sql = "UPDATE users SET full_name = :name , email = :email, date_of_birth = :dob, country = :country WHERE user_id = :id";
     $statement = $conn->prepare($sql);
     $statement->bindParam(":name",$name);
     $statement->bindParam(":email",$email);
-    // $statement->bindParam(":dob",$dob);
+    $statement->bindParam(":dob",$dob);
     $statement->bindParam(":country",$country);
     $statement->bindParam(":id",$id);
     $statement->execute();
