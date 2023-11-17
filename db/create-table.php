@@ -6,7 +6,8 @@ function createUsersTable($conn) {
      $sql = "CREATE TABLE IF NOT EXISTS users( 
 			  user_id   INT AUTO_INCREMENT,
 			  full_name  VARCHAR(30) NOT NULL, 
-			  email VARCHAR(30) NOT NULL, 
+			  email VARCHAR(30) NOT NULL,
+			  role VARCHAR(5) DEFAULT 'user', 
 			  password VARCHAR(100) NOT NULL,
 			  date_of_birth DATE NULL,
 			  mobile_no VARCHAR(13),

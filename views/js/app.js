@@ -1,5 +1,5 @@
-const SignupForm = document.getElementById("signup-form");
+const Form = document.querySelector("form");
 
 window.addEventListener("load",function(e){
-	SignupForm.reset();
+	Form.reset();
 });
