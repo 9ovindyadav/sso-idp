@@ -15,14 +15,15 @@ function addUser($name, $email, $dob, $country,$password = "admin") {
                                   ]);
 }
 
-function updateUser($name, $email, $dob, $country, $id) {
+function updateUser($name, $email, $dob, $country, $id, $role) {
     global $conn;
-    $sql = "UPDATE users SET full_name = :name , email = :email, date_of_birth = :dob, country = :country WHERE user_id = :id";
+    $sql = "UPDATE users SET full_name = :name , email = :email, date_of_birth = :dob, country = :country , role = :role WHERE user_id = :id";
     $statement = $conn->prepare($sql);
     $statement->bindParam(":name",$name);
     $statement->bindParam(":email",$email);
     $statement->bindParam(":dob",$dob);
     $statement->bindParam(":country",$country);
+    $statement->bindParam(":role",$role);
     $statement->bindParam(":id",$id);
     $statement->execute();
 }
